@@ -10,11 +10,14 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="titulo_crear">CREAR EMPLEADOS</string>
-    <string name="numero_identificacion">Número de Identificación</string>
+    <string name="cedula">Cédula</string>
     <string name="nombres">Nombres</string>
     <string name="apellidos">Apellidos</string>
-    <string name="telefono">Teléfono</string>
+    <string name="celular">Celular</string>
     <string name="correo">Correo Electronico</string>
     <string name="guardar">GUARDAR</string>
     <string name="limpiar">LIMPIAR</string>
+    <string name="titulo_detalle">DETALLE EMPLEADOS</string>
+    <string name="vinculacion">Tipo de Vinculación</string>
+    <string name="diruofi">Dirección u Oficina</string>
 </resources>
