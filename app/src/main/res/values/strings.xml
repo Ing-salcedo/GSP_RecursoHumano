@@ -20,4 +20,27 @@
     <string name="titulo_detalle">DETALLE EMPLEADOS</string>
     <string name="vinculacion">Tipo de Vinculación</string>
     <string name="diruofi">Dirección u Oficina</string>
+    <string name="ops">OPS</string>
+    <string name="provisional">Provisional</string>
+    <string name="libre_nombramiento">Libre Nombramiento y remoción</string>
+    <string name="carrera_adm">Carrera Administrativa</string>
+    <string name="salud_publica">Dirección de Salud Pública</string>
+    <string name="apoyo_gestion">Oficina de Apoyo a la Gestión</string>
+    <string name="atencion_ciudadano">Oficina de Atención al Ciudadano y Participación Social</string>
+    <string name="gestion_servicios">Dirección de Gestión de Servicios de Salud y Aseguramiento</string>
+    <string name="empleado_creado">Empleado creado exitosamente</string>
+
+    <string-array name="ArraVinculacion">
+        <item>@string/ops</item>
+        <item>@string/provisional</item>
+        <item>@string/libre_nombramiento</item>
+        <item>@string/carrera_adm</item>
+    </string-array>
+
+    <string-array name="ArraDiruOfi">
+        <item>@string/apoyo_gestion</item>
+        <item>@string/salud_publica</item>
+        <item>@string/atencion_ciudadano</item>
+        <item>@string/gestion_servicios</item>
+    </string-array>
 </resources>
