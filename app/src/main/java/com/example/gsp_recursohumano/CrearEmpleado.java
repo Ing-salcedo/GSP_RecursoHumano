@@ -2,8 +2,11 @@ package com.example.gsp_recursohumano;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -45,6 +48,8 @@ public class CrearEmpleado extends AppCompatActivity {
         String ced, nom, apell, id, corr, cel, vin = "", DirOf = "";
         int poscmbvincula, poscmbDiruO;
         Empleado e;
+        InputMethodManager imm;
+
         ced = cedula.getText().toString();
         nom = nombre.getText().toString();
         apell = apellido.getText().toString();
@@ -52,6 +57,9 @@ public class CrearEmpleado extends AppCompatActivity {
         cel = celular.getText().toString();
         poscmbvincula = comboVinculacion.getSelectedItemPosition();
         poscmbDiruO = comboDiruOfi.getSelectedItemPosition();
+        imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(cedula.getWindowToken(),0);
+
         switch (poscmbvincula){
             case 0:
                 vin = getString(R.string.ops);
@@ -97,5 +105,11 @@ public class CrearEmpleado extends AppCompatActivity {
         celular.setText("");
         correo.setText("");
         cedula.requestFocus();
+    }
+
+    public void onBackPressed(){
+       finish();
+       Intent i = new Intent(CrearEmpleado.this, MainActivity.class);
+       startActivity(i);
     }
 }

@@ -22,7 +22,7 @@
         android:layout_width="222dp"
         android:layout_height="165dp"
         android:layout_gravity="center_horizontal"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <EditText
         android:id="@+id/txtCedula"
@@ -48,22 +48,39 @@
         android:hint="@string/apellidos"
         android:inputType="textPersonName" />
 
+    <TextView
+        android:id="@+id/lblEnumVinculacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="@string/enunciado_vinculacion"
+        android:textSize="18sp" />
+
     <Spinner
         android:id="@+id/cmbTipoVinculacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6sp" />
+        android:layout_marginTop="5sp" />
+
+    <TextView
+        android:id="@+id/lblEnumDiruOfi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:text="@string/enunciado_diruofi"
+        android:textSize="18sp" />
 
     <Spinner
         android:id="@+id/cmbDirecciónuOficina"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6sp" />
+        android:layout_marginTop="5sp" />
 
     <EditText
         android:id="@+id/txtCelular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="3sp"
         android:ems="10"
         android:hint="@string/celular"
         android:inputType="phone" />
@@ -85,16 +102,26 @@
             android:id="@+id/btnGuardar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="3sp"
+            android:layout_marginTop="3sp"
+            android:layout_marginRight="3sp"
             android:layout_weight="1"
             android:onClick="guardar"
-            android:text="@string/guardar" />
+            android:text="@string/guardar"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnLimpiar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="3sp"
+            android:layout_marginTop="3sp"
+            android:layout_marginRight="3sp"
             android:layout_weight="1"
             android:onClick="limpiar"
-            android:text="@string/limpiar" />
+            android:text="@string/limpiar"
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

@@ -29,6 +29,8 @@
     <string name="atencion_ciudadano">Oficina de Atención al Ciudadano y Participación Social</string>
     <string name="gestion_servicios">Dirección de Gestión de Servicios de Salud y Aseguramiento</string>
     <string name="empleado_creado">Empleado creado exitosamente</string>
+    <string name="enunciado_vinculacion">Seleccione el tipo de vinculación:</string>
+    <string name="enunciado_diruofi">Seleccione la Dirección u Oficina a que pertenece:</string>
 
     <string-array name="ArraVinculacion">
         <item>@string/ops</item>
