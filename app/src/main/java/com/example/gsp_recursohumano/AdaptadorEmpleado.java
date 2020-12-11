@@ -15,9 +15,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class AdaptadorEmpleado extends RecyclerView.Adapter<AdaptadorEmpleado.EmpleadoViewHolder> {
 
     private ArrayList<Empleado> empleados;
+    private OnEmpleadoClickListener clickListener;
 
-    public AdaptadorEmpleado(ArrayList<Empleado> empleados){
+    public AdaptadorEmpleado(ArrayList<Empleado> empleados, OnEmpleadoClickListener clickListener){
         this.empleados = empleados;
+        this.clickListener = clickListener;
     }
 
     @NonNull
@@ -37,6 +39,12 @@ public class AdaptadorEmpleado extends RecyclerView.Adapter<AdaptadorEmpleado.Em
         holder.DiruOfi.setText(e.getDiruofi());
         holder.celular.setText(e.getCelular());
         holder.correo.setText(e.getCorreo());
+        holder.v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickListener.onEmpleadoClick(e);
+            }
+        });
     }
 
     @Override
@@ -61,5 +69,8 @@ public class AdaptadorEmpleado extends RecyclerView.Adapter<AdaptadorEmpleado.Em
             celular = v.findViewById(R.id.lblCelularItem);
             correo = v.findViewById(R.id.lblCorreoItem);
         }
+    }
+    public interface OnEmpleadoClickListener{
+        void onEmpleadoClick(Empleado e);
     }
 }
