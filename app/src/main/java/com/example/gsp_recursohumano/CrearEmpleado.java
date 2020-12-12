@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -13,13 +14,18 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 public class CrearEmpleado extends AppCompatActivity {
     private EditText cedula, nombre, apellido, celular, correo;
     private ImageView foto;
+    private Uri uri;
     private Spinner comboVinculacion, comboDiruOfi;
     private String opcVinculacion[], opcDiruOfi[];
     private ArrayAdapter<String> adapter1, adapter2;
+    private StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,9 @@ public class CrearEmpleado extends AppCompatActivity {
         comboDiruOfi = findViewById(R.id.cmbDirecciónuOficina);
         celular = findViewById(R.id.txtCelular);
         correo = findViewById(R.id.txtCorreo);
+        foto = findViewById(R.id.imgFotoSeleccionada);
+
+        storageReference = FirebaseStorage.getInstance().getReference();
 
         opcVinculacion = getResources().getStringArray(R.array.ArraVinculacion);
         opcDiruOfi = getResources().getStringArray(R.array.ArraDiruOfi);
@@ -50,6 +59,7 @@ public class CrearEmpleado extends AppCompatActivity {
         Empleado e;
         InputMethodManager imm;
 
+        id = Datos.getId();
         ced = cedula.getText().toString();
         nom = nombre.getText().toString();
         apell = apellido.getText().toString();
@@ -88,10 +98,16 @@ public class CrearEmpleado extends AppCompatActivity {
                 DirOf = getString(R.string.gestion_servicios);
                 break;
         }
-        e = new Empleado(ced,nom,apell,"",vin,DirOf,cel,corr);
+        e = new Empleado(ced,nom,apell,id,vin,DirOf,cel,corr);
         e.guardar();
         limpiar();
+        subir_foto(id);
         Snackbar.make(v,R.string.empleado_creado,Snackbar.LENGTH_LONG).show();
+    }
+
+    public void subir_foto(String id){
+        StorageReference child = storageReference.child(id);
+        UploadTask uploadTask = child.putFile(uri);
     }
 
     public void limpiar(View v){
@@ -105,6 +121,7 @@ public class CrearEmpleado extends AppCompatActivity {
         celular.setText("");
         correo.setText("");
         cedula.requestFocus();
+        foto.setImageResource(android.R.drawable.ic_menu_gallery);
     }
 
     public void onBackPressed(){
@@ -112,4 +129,21 @@ public class CrearEmpleado extends AppCompatActivity {
        Intent i = new Intent(CrearEmpleado.this, MainActivity.class);
        startActivity(i);
     }
+    public void seleccionarFoto(View v){
+        Intent in = new Intent();
+        in.setType("image/*");
+        in.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(in,"Seleccione la foto del empleado"),1);
+    }
+
+    protected void onActivityResult(int requesCode, int resultCode, Intent data){
+        super.onActivityResult(requesCode, resultCode, data);
+        if(requesCode == 1){
+            uri = data.getData();
+            if(uri != null){
+                foto.setImageURI(uri);
+            }
+        }
+    }
+
 }
