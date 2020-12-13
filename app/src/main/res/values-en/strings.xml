@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GSP_RecursoHumano</string>
+    <string name="titulo_crear">CREATE EMPLOYEES</string>
+    <string name="cedula">Id</string>
+    <string name="nombres">Names</string>
+    <string name="apellidos">Last names</string>
+    <string name="celular">Cell phone</string>
+    <string name="correo">Email</string>
+    <string name="guardar">SAVE</string>
+    <string name="limpiar">CLEAR</string>
+    <string name="titulo_detalle">EMPLOYEE DETAIL</string>
+    <string name="vinculacion">Linking Type</string>
+    <string name="diruofi">Directorate or Office</string>
+    <string name="ops">OPS</string>
+    <string name="provisional">Provisional</string>
+    <string name="libre_nombramiento">Free appointment and removal</string>
+    <string name="carrera_adm">Administrative career</string>
+    <string name="salud_publica">Directorate of Public Health</string>
+    <string name="apoyo_gestion">Management Support Office</string>
+    <string name="atencion_ciudadano">Office of Citizen Services and Social Participation</string>
+    <string name="gestion_servicios">Directorate of Health Services Management and Insurance</string>
+    <string name="empleado_creado">Employee created successfully</string>
+    <string name="enunciado_vinculacion">Select the type of link:</string>
+    <string name="enunciado_diruofi">Select the Directorate or Office to which it belongs:</string>
+    <string name="seleccionar_foto">Select employee photo</string>
+    <string name="titulo_eliminar">Delete Employee</string>
+    <string name="mensaje_eliminar">Are you sure to delete this employee?</string>
+    <string name="mensaje_positivo">Yes</string>
+    <string name="mensaje_negativo">No</string>
+    <string name="eliminar">Delete</string>
+    <string name="mensaje_error_cedula">Enter the ID</string>
+    <string name="mensaje_error_nombre">Enter name</string>
+    <string name="mensaje_error_apellido">Enter the last name</string>
+    <string name="mensaje_error_celular">Enter the cell phone number</string>
+    <string name="mensaje_error_correo">Enter the email</string>
+</resources>

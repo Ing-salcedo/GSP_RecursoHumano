@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.storage.FirebaseStorage;
@@ -58,7 +59,10 @@ public class CrearEmpleado extends AppCompatActivity {
         int poscmbvincula, poscmbDiruO;
         Empleado e;
         InputMethodManager imm;
+        imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(cedula.getWindowToken(),0);
 
+        if(validar()){
         id = Datos.getId();
         ced = cedula.getText().toString();
         nom = nombre.getText().toString();
@@ -67,8 +71,6 @@ public class CrearEmpleado extends AppCompatActivity {
         cel = celular.getText().toString();
         poscmbvincula = comboVinculacion.getSelectedItemPosition();
         poscmbDiruO = comboDiruOfi.getSelectedItemPosition();
-        imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(cedula.getWindowToken(),0);
 
         switch (poscmbvincula){
             case 0:
@@ -103,6 +105,8 @@ public class CrearEmpleado extends AppCompatActivity {
         limpiar();
         subir_foto(id);
         Snackbar.make(v,R.string.empleado_creado,Snackbar.LENGTH_LONG).show();
+        uri = null;
+        }
     }
 
     public void subir_foto(String id){
@@ -143,7 +147,39 @@ public class CrearEmpleado extends AppCompatActivity {
             if(uri != null){
                 foto.setImageURI(uri);
             }
+
         }
     }
-
+    public boolean validar(){
+        if(cedula.getText().toString().isEmpty()){
+            cedula.setError(getString(R.string.mensaje_error_cedula));
+            cedula.requestFocus();
+            return false;
+        }
+        if(nombre.getText().toString().isEmpty()){
+            nombre.setError(getString(R.string.mensaje_error_nombre));
+            nombre.requestFocus();
+            return false;
+        }
+        if(apellido.getText().toString().isEmpty()){
+            apellido.setError(getString(R.string.mensaje_error_apellido));
+            apellido.requestFocus();
+            return false;
+        }
+        if(celular.getText().toString().isEmpty()){
+            celular.setError(getString(R.string.mensaje_error_celular));
+            celular.requestFocus();
+            return false;
+        }
+        if(correo.getText().toString().isEmpty()){
+            correo.setError(getString(R.string.mensaje_error_correo));
+            correo.requestFocus();
+            return false;
+        }
+        if(uri == null){
+            Snackbar.make((View)cedula,R.string.seleccionar_foto,Snackbar.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
 }
