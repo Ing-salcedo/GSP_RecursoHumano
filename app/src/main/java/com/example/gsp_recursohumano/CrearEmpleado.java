@@ -1,11 +1,13 @@
 package com.example.gsp_recursohumano;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
@@ -15,6 +17,11 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -27,6 +34,8 @@ public class CrearEmpleado extends AppCompatActivity {
     private String opcVinculacion[], opcDiruOfi[];
     private ArrayAdapter<String> adapter1, adapter2;
     private StorageReference storageReference;
+    private DatabaseReference databaseReference;
+    private Boolean check = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +52,7 @@ public class CrearEmpleado extends AppCompatActivity {
         foto = findViewById(R.id.imgFotoSeleccionada);
 
         storageReference = FirebaseStorage.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Empleados");
 
         opcVinculacion = getResources().getStringArray(R.array.ArraVinculacion);
         opcDiruOfi = getResources().getStringArray(R.array.ArraDiruOfi);
@@ -100,12 +110,7 @@ public class CrearEmpleado extends AppCompatActivity {
                 DirOf = getString(R.string.gestion_servicios);
                 break;
         }
-        e = new Empleado(ced,nom,apell,id,vin,DirOf,cel,corr);
-        e.guardar();
-        limpiar();
-        subir_foto(id);
-        Snackbar.make(v,R.string.empleado_creado,Snackbar.LENGTH_LONG).show();
-        uri = null;
+        verificarexistencia(ced,nom,apell,id,vin,DirOf,cel,corr,v);
         }
     }
 
@@ -147,7 +152,6 @@ public class CrearEmpleado extends AppCompatActivity {
             if(uri != null){
                 foto.setImageURI(uri);
             }
-
         }
     }
     public boolean validar(){
@@ -181,5 +185,28 @@ public class CrearEmpleado extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+    public void verificarexistencia(String ced, String nom, String apell, String id, String vin, String DirOf, String cel, String corr, View v){
+        databaseReference.orderByChild("cedula").equalTo(ced).limitToFirst(1).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    Snackbar.make(v,R.string.mensaje_existente,Snackbar.LENGTH_LONG).show();
+                }
+                else {
+                    Empleado e;
+                    e = new Empleado(ced,nom,apell,id,vin,DirOf,cel,corr);
+                    e.guardar();
+                    limpiar();
+                    subir_foto(id);
+                    Snackbar.make(v,R.string.empleado_creado,Snackbar.LENGTH_LONG).show();
+                    uri = null;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 }

@@ -34,4 +34,5 @@
     <string name="mensaje_error_apellido">Enter the last name</string>
     <string name="mensaje_error_celular">Enter the cell phone number</string>
     <string name="mensaje_error_correo">Enter the email</string>
+    <string name="mensaje_existente">Employee already exists</string>
 </resources>

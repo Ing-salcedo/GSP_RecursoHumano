@@ -42,6 +42,7 @@
     <string name="mensaje_error_apellido">Digite el apellido</string>
     <string name="mensaje_error_celular">Digite el numero de celular</string>
     <string name="mensaje_error_correo">Digite el correo electronico</string>
+    <string name="mensaje_existente">El empleado ya existe</string>
 
     <string-array name="ArraVinculacion">
         <item>@string/ops</item>
