@@ -18,7 +18,7 @@ public class Datos {
         databaseReference.child(bd).child(e.getId()).setValue(e);
     }
 
-    public static ArrayList<Empleado> obtener(){
-        return empleados;
+    public static void setEmpleados (ArrayList<Empleado> empleados){
+        empleados = empleados;
     }
 }

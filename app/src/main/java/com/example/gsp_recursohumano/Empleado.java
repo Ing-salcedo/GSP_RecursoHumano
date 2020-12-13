@@ -14,6 +14,10 @@ public class Empleado {
         this.correo = correo;
     }
 
+    public Empleado(){
+
+    }
+
     public String getCedula() {
         return cedula;
     }
