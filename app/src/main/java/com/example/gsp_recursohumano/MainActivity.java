@@ -80,9 +80,7 @@ public class MainActivity extends AppCompatActivity implements AdaptadorEmpleado
     public void onEmpleadoClick(Empleado e) {
         Intent intent;
         Bundle bundle;
-
         bundle = new Bundle();
-
         bundle.putString("id",e.getId());
         bundle.putString("cedula", e.getCedula());
         bundle.putString("nombre",e.getNombre());

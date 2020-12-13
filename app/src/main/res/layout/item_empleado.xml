@@ -18,8 +18,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgFotoItem"
-                android:layout_width="wrap_content"
-                android:layout_height="138dp"
+                android:layout_width="89dp"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="5sp"
                 android:src="@drawable/ic_launcher_foreground" />
@@ -60,7 +60,8 @@
                     android:layout_height="wrap_content"
                     android:text="TextView"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/lblDiruOfiItem"
@@ -76,7 +77,8 @@
                     android:layout_height="wrap_content"
                     android:text="TextView"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/lblCorreoItem"
@@ -84,7 +86,8 @@
                     android:layout_height="wrap_content"
                     android:text="TextView"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone" />
             </LinearLayout>
 
         </LinearLayout>

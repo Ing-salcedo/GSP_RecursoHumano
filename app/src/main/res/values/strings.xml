@@ -31,6 +31,12 @@
     <string name="empleado_creado">Empleado creado exitosamente</string>
     <string name="enunciado_vinculacion">Seleccione el tipo de vinculación:</string>
     <string name="enunciado_diruofi">Seleccione la Dirección u Oficina a que pertenece:</string>
+    <string name="seleccionar_foto">Seleccione la foto del empleado</string>
+    <string name="titulo_eliminar">Eliminar Empleado</string>
+    <string name="mensaje_eliminar">¿Está seguro de eliminar este empleado?</string>
+    <string name="mensaje_positivo">Si</string>
+    <string name="mensaje_negativo">No</string>
+    <string name="eliminar">Eliminar</string>
 
     <string-array name="ArraVinculacion">
         <item>@string/ops</item>
